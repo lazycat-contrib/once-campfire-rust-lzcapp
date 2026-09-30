@@ -35,5 +35,5 @@ stores:
   private:
     enabled: true
     skip_if_version_exists: true
-    name: Campfire
+    name: "Campfire Rust"
     summary: "聊天室 —— ONCE Campfire 的 Rust 移植版，单二进制、更快更省内存"
