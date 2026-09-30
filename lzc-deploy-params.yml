@@ -1,0 +1,33 @@
+params:
+    - id: vapid_public_key
+      type: string
+      name: "VAPID Public Key"
+      description: "P-256 public key in URL-safe Base64 for Web Push notifications. Leave empty to keep push disabled."
+      default_value: ""
+      optional: true
+
+    - id: vapid_private_key
+      type: string
+      name: "VAPID Private Key"
+      description: "P-256 private key in URL-safe Base64, the pair of the public key above."
+      default_value: ""
+      optional: true
+
+locales:
+    zh:
+        vapid_public_key:
+            name: "VAPID 公钥"
+            description: "用于 Web Push 推送的 P-256 公钥（URL-safe Base64）。留空则关闭推送通知。"
+
+        vapid_private_key:
+            name: "VAPID 私钥"
+            description: "与公钥配对的 P-256 私钥（URL-safe Base64）。"
+
+    en:
+        vapid_public_key:
+            name: "VAPID Public Key"
+            description: "P-256 public key in URL-safe Base64 for Web Push notifications. Leave empty to keep push disabled."
+
+        vapid_private_key:
+            name: "VAPID Private Key"
+            description: "P-256 private key in URL-safe Base64, the pair of the public key above."

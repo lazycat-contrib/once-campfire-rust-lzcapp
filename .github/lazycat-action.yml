@@ -1,0 +1,39 @@
+version: 1
+
+project:
+  root: .
+  build_config: lzc-build.yml
+  package_file: package.yml
+  output: dist/application.lpk
+  target_arch: amd64
+
+update:
+  strategy: publish
+  allow_downgrade: false
+  version_source:
+    type: image
+    image: once-campfire-rust
+
+build:
+  toolchains: []
+  run_buildscript: false
+
+images:
+  - id: once-campfire-rust
+    target: service
+    service: once-campfire-rust
+    source: ghcr.io/basecamp/once-campfire-rust
+    channel: stable
+    sort: semver
+    tag_regex: '^v[0-9]+\.[0-9]+\.[0-9]+$'
+    delivery:
+      mode: mirror
+
+stores:
+  official:
+    enabled: false
+  private:
+    enabled: true
+    skip_if_version_exists: true
+    name: Campfire
+    summary: "聊天室 —— ONCE Campfire 的 Rust 移植版，单二进制、更快更省内存"

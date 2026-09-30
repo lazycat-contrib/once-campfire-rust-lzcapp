@@ -1,0 +1,21 @@
+package: cloud.lazycat.app.once-campfire-rust
+version: 0.1.2
+name: Campfire
+description: Web-based chat application, the Rust port of ONCE Campfire
+min_os_version: 1.5.0
+homepage: https://github.com/basecamp/once-campfire-rust
+author: basecamp
+license: MIT
+locales:
+  zh:
+    name: "篝火"
+    description: "篝火是一款基于网页的聊天应用（ONCE Campfire 的 Rust 移植版）"
+  zh_CN:
+    name: "篝火"
+    description: "篝火是一款基于网页的聊天应用（ONCE Campfire 的 Rust 移植版）"
+  en:
+    name: "Campfire"
+    description: "Campfire is a web-based chat application, the Rust port of ONCE Campfire"
+  ja:
+    name: "キャンプファイアー"
+    description: "キャンプファイアーはウェブベースのチャットアプリケーションです"

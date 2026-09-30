@@ -1,0 +1,22 @@
+application:
+  subdomain: campfire-rust
+  multi_instance: false
+  upstreams:
+    - location: /
+      backend: http://once-campfire-rust:80/
+services:
+  once-campfire-rust:
+    # upstream: ghcr.io/basecamp/once-campfire-rust
+    image: ghcr.1ms.run/basecamp/once-campfire-rust:0.1.2
+    # 镜像内以 uid 1000 运行，持久目录由 root 挂载；以 root 启动保证存储可写
+    user: root
+    environment:
+      # 懒猫微服网关负责 TLS 终止，应用走明文 HTTP（见上游 README 的 Plain HTTP）
+      - DISABLE_SSL=1
+      # TLS_DOMAIN 决定 VAPID_SUBJECT 等对外地址
+      - TLS_DOMAIN={{.S.AppDomain}}
+      - SECRET_KEY_BASE={{stable_secret "campfire-rust#secret_key"}}
+      - VAPID_PUBLIC_KEY={{.U.vapid_public_key}}
+      - VAPID_PRIVATE_KEY={{.U.vapid_private_key}}
+    binds:
+      - /lzcapp/var/storage:/rails/storage
