@@ -6,8 +6,8 @@ application:
       backend: http://once-campfire-rust:80/
 services:
   once-campfire-rust:
-    # upstream: ghcr.io/basecamp/once-campfire-rust
-    image: ghcr.1ms.run/basecamp/once-campfire-rust:0.1.2
+    # upstream: ghcr.io/basecamp/once-campfire-rust:v0.1.2
+    image: ghcr.1ms.run/basecamp/once-campfire-rust:v0.1.2
     # 镜像内以 uid 1000 运行，持久目录由 root 挂载；以 root 启动保证存储可写
     user: root
     environment:
