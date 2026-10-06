@@ -3,15 +3,13 @@ params:
       type: string
       name: "VAPID Public Key"
       description: "P-256 public key in URL-safe Base64 for Web Push notifications. Leave empty to keep push disabled."
-      default_value: ""
-      optional: true
+      default_value: "BPpI5uuvCWArmATkvt4ylQMPJpBnrFRspnUC3oM0oEdAKHuFpqs_vyRNJfjNGHr68rbXBjXZ_gzl9WgXcapeiDw"
 
     - id: vapid_private_key
       type: string
       name: "VAPID Private Key"
       description: "P-256 private key in URL-safe Base64, the pair of the public key above."
-      default_value: ""
-      optional: true
+      default_value: "2T2wM8Q-kmnJsdi67um7nFBhGGsGMWRD1KmLvOqd9lw="
 
 locales:
     zh:
