@@ -12,7 +12,7 @@ services:
     # 镜像内以 uid 1000 运行，持久目录由 root 挂载；以 root 启动保证存储可写
     user: root
     environment:
-{{if .U.enable_custom_domain}}
+{{if .U.custom_domain}}
       # 自定义域名：TLS 由外部反向代理/CDN（如 Cloudflare）终止，容器内走明文 HTTP
       - VAPID_SUBJECT=https://{{.U.custom_domain}}
 {{else}}

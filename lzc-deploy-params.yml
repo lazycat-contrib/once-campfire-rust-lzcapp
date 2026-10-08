@@ -1,14 +1,8 @@
 params:
-    - id: enable_custom_domain
-      type: bool
-      name: "Enable Custom Domain"
-      description: "Whether the app is reached through a custom domain (TLS terminated by an external reverse proxy or CDN). If false, the LazyCat-provided domain is used."
-      default_value: false
-
     - id: custom_domain
       type: string
       name: "Custom Domain"
-      description: "Custom domain, without https:// or http://. Point the domain at this app and terminate TLS externally (e.g. Cloudflare or your own reverse proxy)."
+      description: "Custom domain the app is reached at, without https:// or http://. Point the domain at this app and terminate TLS externally (e.g. Cloudflare or your own reverse proxy); it is used for the web push notification links. Leave empty to use the LazyCat-provided domain."
       default_value: ""
       optional: true
 
@@ -26,13 +20,9 @@ params:
 
 locales:
     zh:
-        enable_custom_domain:
-            name: "启用自定义域名"
-            description: "是否通过自定义域名访问（TLS 由外部反向代理/CDN 终止）；关闭时使用懒猫微服域名。"
-
         custom_domain:
             name: "自定义域名"
-            description: "应用程序的自定义域名（不带 https:// 或 http://）。请自行将域名指向本应用并在外部终止 TLS（如 Cloudflare 或自有反代）。"
+            description: "应用程序对外访问的自定义域名（不带 https:// 或 http://），用于 Web Push 推送通知链接。请自行将域名指向本应用并在外部终止 TLS（如 Cloudflare 或自有反代）；留空则使用懒猫微服域名。"
 
         vapid_public_key:
             name: "VAPID 公钥"
@@ -43,13 +33,9 @@ locales:
             description: "与公钥配对的 P-256 私钥（URL-safe Base64）。"
 
     en:
-        enable_custom_domain:
-            name: "Enable Custom Domain"
-            description: "Whether the app is reached through a custom domain (TLS terminated by an external reverse proxy or CDN). If false, the LazyCat-provided domain is used."
-
         custom_domain:
             name: "Custom Domain"
-            description: "Custom domain, without https:// or http://. Point the domain at this app and terminate TLS externally (e.g. Cloudflare or your own reverse proxy)."
+            description: "Custom domain the app is reached at, without https:// or http://. Point the domain at this app and terminate TLS externally (e.g. Cloudflare or your own reverse proxy); it is used for the web push notification links. Leave empty to use the LazyCat-provided domain."
 
         vapid_public_key:
             name: "VAPID Public Key"
