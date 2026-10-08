@@ -1,6 +1,7 @@
 application:
   subdomain: campfire-rust
-  multi_instance: false
+  public_path:
+    - /
   upstreams:
     - location: /
       backend: http://once-campfire-rust:80/
