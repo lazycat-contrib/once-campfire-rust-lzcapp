@@ -1,4 +1,17 @@
 params:
+    - id: enable_custom_domain
+      type: bool
+      name: "Enable Custom Domain"
+      description: "Whether to serve a custom domain with built-in Let's Encrypt TLS. If false, the app runs behind the LazyCat gateway on the LazyCat-provided domain (plain HTTP)."
+      default_value: false
+
+    - id: custom_domain
+      type: string
+      name: "Custom Domain"
+      description: "Custom domain for the application, without https:// or http://. The domain must be publicly reachable for the built-in Let's Encrypt certificate."
+      default_value: ""
+      optional: true
+
     - id: vapid_public_key
       type: string
       name: "VAPID Public Key"
@@ -13,6 +26,14 @@ params:
 
 locales:
     zh:
+        enable_custom_domain:
+            name: "启用自定义域名"
+            description: "是否使用自定义域名并提供内置 Let's Encrypt 证书；关闭时使用懒猫微服域名（网关终止 TLS，容器内明文 HTTP）。"
+
+        custom_domain:
+            name: "自定义域名"
+            description: "应用程序的自定义域名（不带 https:// 或 http://）。该域名需公网可达以申请内置 Let's Encrypt 证书。"
+
         vapid_public_key:
             name: "VAPID 公钥"
             description: "用于 Web Push 推送的 P-256 公钥（URL-safe Base64）。留空则关闭推送通知。"
@@ -22,6 +43,14 @@ locales:
             description: "与公钥配对的 P-256 私钥（URL-safe Base64）。"
 
     en:
+        enable_custom_domain:
+            name: "Enable Custom Domain"
+            description: "Whether to serve a custom domain with built-in Let's Encrypt TLS. If false, the app runs behind the LazyCat gateway on the LazyCat-provided domain (plain HTTP)."
+
+        custom_domain:
+            name: "Custom Domain"
+            description: "Custom domain for the application, without https:// or http://. The domain must be publicly reachable for the built-in Let's Encrypt certificate."
+
         vapid_public_key:
             name: "VAPID Public Key"
             description: "P-256 public key in URL-safe Base64 for Web Push notifications. Leave empty to keep push disabled."

@@ -11,10 +11,16 @@ services:
     # 镜像内以 uid 1000 运行，持久目录由 root 挂载；以 root 启动保证存储可写
     user: root
     environment:
-      # 懒猫微服网关负责 TLS 终止，应用走明文 HTTP（见上游 README 的 Plain HTTP）
+{{if .U.enable_custom_domain}}
+      # 自定义域名：TLS_DOMAIN 触发 front 的内置 ACME（Let's Encrypt），
+      # Rails 侧保持 force_ssl 语义；要求域名公网可达
+      - TLS_DOMAIN={{.U.custom_domain}}
+{{else}}
+      # 默认：懒猫微服网关负责 TLS 终止，应用走明文 HTTP（见上游 README 的 Plain HTTP）；
+      # VAPID_SUBJECT 显式指向对外地址，保证 Web Push 通知链接正确
       - DISABLE_SSL=1
-      # TLS_DOMAIN 决定 VAPID_SUBJECT 等对外地址
-      - TLS_DOMAIN={{.S.AppDomain}}
+      - VAPID_SUBJECT=https://{{.S.AppDomain}}
+{{end}}
       - SECRET_KEY_BASE={{stable_secret "campfire-rust#secret_key"}}
       - VAPID_PUBLIC_KEY={{.U.vapid_public_key}}
       - VAPID_PRIVATE_KEY={{.U.vapid_private_key}}
